@@ -1,0 +1,81 @@
+<html>
+   <head>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+   </head>
+   <body>
+        <img src="{{ url_for('video_feed') }}" width="40%" > 
+      <div style="float:right">
+      </div>
+      <div style=" height:400px; width:300px; float:right;">
+         <center>
+            <h1><span style="color:#5C5C5C;">Circuit</span><span style="color:#139442"> TEST</span></h1>
+            <h2>Spectro-pointer-control</h2>
+            <br><br>
+            <a href="#" id="up" style="font-size:30px;text-decoration:none;">  &#x1F881;&#x1F881;<br>Forward</a><br><br>
+         </center>
+         <a href="#" id="left" style="font-size:30px;text-decoration:none;"> &#x1F880;&#x1F880;Left</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+         <a href="#" id="right" style="font-size:30px; text-decoration:none;"> Right &#x1F882;&#x1F882;</a><br><br>
+         <center><a href="#" id="down" style="font-size:30px;text-decoration:none;"> Backward<br> &#x1F883;&#x1F883;</a></center>
+         <a href="#" id="zo" style="font-size:30px; text-decoration:none;"> Z- &#x1F882;&#x1F882;</a><br><br>
+         <a href="#" id="ZO" style="font-size:30px; text-decoration:none;"> Z+ &#x1F882;&#x1F882;</a><br><br>
+		 <a href="#" id="enableOFF" style="font-size:30px; text-decoration:none;"> motorOFF &#x1F882;&#x1F882;</a><br><br>
+         <a href="#" id="enableON" style="font-size:30px; text-decoration:none;"> motorON &#x1F882;&#x1F882;</a><br><br>
+		 
+		 
+		 
+         		 
+		 <form method="POST" action="test">
+            <h5> valor maxino Azimut 19200 ,Elavacion 9200 </h5>
+            <p>AZ,EL <input type="numbers" min="1" max="180" value="      " name="AZ" /> </p>
+            <input type="submit" value="submit" />
+         </form>
+		 
+		 
+      </div>
+      <script>
+         $( document ).ready(function(){
+             $("#down").on("mousedown", function() {
+              $.get('/down_side');
+              }).on('mouseup', function() {
+              $.get('/stop');
+             });
+             $("#up").on("mousedown", function() {
+              $.get('/up_side');
+              }).on('mouseup', function() {
+              $.get('/stop');
+             });
+             $("#left").on("mousedown", function() {
+              $.get('/left_side');
+              }).on('mouseup', function() {
+              $.get('/stop');
+             });
+             $("#right").on("mousedown", function() {
+              $.get('/right_side');
+              }).on('mouseup', function() {
+              $.get('/stop');
+             });
+             $("#ZO").on("mousedown", function() {
+              $.get('/ZO_side');
+              }).on('mouseup', function() {
+              $.get('/centro');
+             });
+         	$("#zo").on("mousedown", function() {
+              $.get('/zo_side');
+              }).on('mouseup', function() {
+              $.get('/centro');
+         	});
+			$("#enableON").on("mousedown", function() {
+              $.get('/enableON_side');
+              }).on('mouseup', function() {
+              $.get('/enableON');
+             });
+			  $("#enableOFF").on("mousedown", function() {
+              $.get('/enableOFF_side');
+              }).on('mouseup', function() {
+              $.get('/enableOFF');
+			});
+          });
+         
+      </script>
+   </body>
+</html>
